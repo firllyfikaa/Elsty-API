@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+  --primary-color: #4f46e5;
+  --primary-dark: #4338ca;
+  --danger-color: #dc2626;
+  --danger-light: #fee2e2;
+  --success-color: #059669;
+  --warning-color: #f59e0b;
+  --info-color: #2563eb;
+  --gray-light: #f3f4f6;
+  --gray-medium: #d1d5db;
+  --gray-dark: #4b5563;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --background-light: #f4f7fb; /* Light, clean background */
+  --text-dark: #333; /* Dark for better readability */
+  --text-muted: #888; /* Soft gray for less important text */
+  --link-color: #1e90ff; /* Link color */
+  --link-hover-color: #1177cc; /* Darker blue on hover */
+  
+  --secondary-text-color: #4b5563;
+  --border-color: #e5e7eb;
+  --shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --bg-color: linear-gradient(#F1F3FF, #CBD4FF);
+  --text-color: #151A2D; /* Light mode text */
+  --primary-color: #4f46e5; /* Primary color */
+  --secondary-color: #1f2937; /* Secondary color */
+  --changelog-color: linear-gradient(135deg, #2563eb, #6366f1);
+  --input-color: #F1F3FF;
+  --texttra-color: #64748b;
+  --dash-color: linear-gradient(135deg, #eef2ff, #c7d2fe);
+  --stat-value-color: #1e293b;
+  --endp-color: #F1F4FF;
+  --endpoint-color: #F1F8FF;
+  --profile-color: linear-gradient(to right, #4f46e5, #7c3aed);
+}
+
+.dark-mode {
+  --bg-color: #151A2D; /* Dark mode background */
+  --text-color: #F1F4FF; /* Dark mode text */
+  --primary-color: #4f46e5; /* Primary color */
+  --secondary-color: #1E293B; /* Secondary color */
+  --changelog-color: linear-gradient(135deg, #1e40af, #4c1d95);
+  --input-color: #252c48;
+  --texttra-color: #808588;
+  --dash-color: linear-gradient(135deg, #1f2937, #374151);
+  --stat-value-color: #E0E0E0;
+  --endp-color: #151A2D;
+  --endpoint-color: linear-gradient(135deg, #1f2937, #374151);
+  --profile-color: linear-gradient(135deg, #1f2937, #374151);
+  
+  --text-color: #e5e7eb;
+  --secondary-text-color: #cbd5e1;
+  --border-color: #4b5563;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Layout Container */
+body {
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 270px; /* Sesuai dengan lebar sidebar */
+  min-height: 100vh;
+  transition: all 0.4s ease;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.main-content.sidebar-collapsed {
+  margin-left: 85px; /* Sesuai dengan lebar sidebar saat collapsed */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  .main-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--bg-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Spinner Animasi */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #e5e7eb;
+  border-top: 6px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer Styling */
+.footer-content {
+  flex: 1;
+  margin-left: 270px; /* Sesuai dengan lebar sidebar */
+  transition: all 0.4s ease;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.footer-content.sidebar-collapsed {
+  margin-left: 85px; /* Sesuai dengan lebar sidebar saat collapsed */
+}
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .footer-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .footer-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+/* Existing styles remain the same */
+
+/* Notification styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+  max-width: 400px;
+  width: calc(100% - 40px);
+}
+
+.notification p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.notification.error {
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+}
+
+.notification.success {
+  background-color: #dcfce7;
+  border-left: 4px solid #22c55e;
+  color: #166534;
+}
+
+.notification .material-symbols-rounded {
+  font-size: 24px;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.notification .close-btn:hover {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification {
+    top: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+}
